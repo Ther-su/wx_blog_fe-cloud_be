@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "ListItem":"../../components/ListItem/ListItem"
+  },
+  "backgroundTextStyle":"dark"
+}

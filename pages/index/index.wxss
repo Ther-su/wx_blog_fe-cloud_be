@@ -1,0 +1,49 @@
+page {
+  background-color: #f8f8f8;
+}
+.index_swiper swiper {
+  width: 750rpx;
+  height: 300rpx;
+}
+.index_swiper image {
+  width: 100%;
+  height: 100%;
+}
+.first_tab navigator {
+  height: 200rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx 10rpx;
+}
+.first_tab navigator .order_wrap {
+  color: #ff9607;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.first_tab navigator .image_wrap {
+  flex: 3;
+}
+.first_tab navigator .image_wrap image {
+  width: 90%;
+  height: 100%;
+}
+.first_tab navigator .article_info_wrap {
+  flex: 5;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.first_tab navigator .article_info_wrap .title_wrap {
+  font-size: 40rpx;
+}
+.first_tab navigator .article_info_wrap .icon_wrap {
+  display: flex;
+}
+.first_tab navigator .article_info_wrap .icon_wrap .iconfont {
+  flex: 1;
+  font-size: 32rpx;
+  color: #666;
+}

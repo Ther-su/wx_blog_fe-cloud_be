@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/edit/index",
+    "pages/sort/index",
+    "pages/my/index",
+    "pages/write/index",
+    "pages/article_list/index",
+    "pages/article_detail/index",
+    "pages/my_article/index",
+    "pages/my_care/index",
+    "pages/author_detail/index",
+    "pages/my_info/index",
+    "pages/search/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#06c261",
+    "navigationBarTitleText": "悦分享",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "icons/home.png",
+        "selectedIconPath": "icons/_home.png"
+      },
+      {
+        "pagePath": "pages/sort/index",
+        "text": "分类",
+        "iconPath": "icons/sort.png",
+        "selectedIconPath": "icons/_sort.png"
+      },
+      {
+        "pagePath": "pages/write/index",
+        "text": "我也要写",
+        "iconPath": "icons/write.png",
+        "selectedIconPath": "icons/_write.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "icons/my.png",
+        "selectedIconPath": "icons/_my.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "iconfont": "/iconfont/iconfont"
+  }
+}

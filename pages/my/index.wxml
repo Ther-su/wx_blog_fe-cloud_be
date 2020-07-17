@@ -1,0 +1,52 @@
+<view class="user_info_wrap">
+  <view class="user_img_wrap" wx:if="{{userInfo.avatarUrl}}">
+    <image class="user_bg" src="{{userInfo.avatarUrl}}"></image>
+    <view class="user_info">
+      <image class="user_icon" src="{{userInfo.avatarUrl}}"></image>
+      <view class="user_name">{{userInfo.nickName}}</view>
+    </view>
+  </view>
+  <button wx:else type="warn" bindgetuserinfo="login" open-type="getUserInfo">登录</button>
+</view>
+
+<view class="user_content" wx:if="{{hasLogin}}">
+  <view class="user_main">
+    <view class="history_wrap">
+      <navigator url="/pages/my_article/index?type=write">
+        <view class="icon_text_wrap">
+          <view class="iconfont icon-shuxie"></view>
+          <view class="history_num">{{userInfo.writeArticle}}</view>
+        </view>
+        <view class="history_name">我写的博文</view>
+      </navigator>
+      <navigator url="/pages/my_article/index?type=collect">
+        <view class="icon_text_wrap">
+          <view class="iconfont icon-shoucang"></view>
+          <view class="history_num">{{userInfo.collectArticle}}</view>
+        </view>
+        <view class="history_name">我收藏的博文</view>
+      </navigator>
+      <navigator url="/pages/my_care/index">
+        <view class="icon_text_wrap">
+          <view class="iconfont icon-chakantieziguanzhu"></view>
+          <view class="history_num">{{userInfo.careAuthor}}</view>
+        </view>
+        <view class="history_name">我关注的博主</view>
+      </navigator>
+    </view>
+    <navigator url="/pages/my_info/index" class="my_info_wrap">
+      个人信息
+    </navigator>
+    <view class="app_info_wrap">
+      <view class="app_info_item" bindtap="about">关于我们</view>
+    </view>
+    <view class="share_button_wrap">
+      <button open-type="share" id="app_item">把应用推荐给其他人</button>
+    </view>
+  </view>
+</view>
+<view class="no_login_tip_wrap" wx:if="{{!hasLogin}}">
+  <view class="no_login_tip">
+    请先登录哦~
+  </view>
+</view>

@@ -1,0 +1,47 @@
+page {
+  background-color: #f3f3f3;
+}
+.modify_wrap {
+  padding: 20rpx 30rpx;
+  margin-top: 60rpx;
+}
+.name_wrap,.gender_wrap,.school_wrap,.major_wrap {
+  background-color: #fff;
+  display: flex;
+  margin: 20rpx 0;
+  height: 100rpx;
+  align-items: center;
+  justify-content: space-around;
+}
+.gender_wrap {
+  padding-right: 110rpx;
+}
+radio-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 50vw;
+}
+label {
+  display: flex;
+}
+input {
+  width: 60vw;
+  height: 60rpx;
+  background-color: #f3f3f3;
+  border-radius: 4px;
+  caret-color: #06c261;
+  padding: 0 10rpx;
+}
+.text_wrap {
+  font-size: 36rpx;
+  color: #666;
+}
+.btn_wrap {
+  height: 500rpx;
+  width: 80vw;
+  margin: 90rpx auto 0;
+}
+button {
+  margin-bottom: 30rpx;
+}

@@ -1,0 +1,49 @@
+.comment_detail_wrap {
+  display: flex;
+  padding: 20rpx;
+  border-bottom: 1px solid #f3f3f3;
+}
+.comment_detail_wrap .comment_avatar image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 20%;
+}
+.comment_detail_wrap .comment_info {
+  padding-left: 30rpx;
+}
+.comment_detail_wrap .comment_info .name_wrap {
+  color: #526c85;
+  font-size: 35rpx;
+}
+.comment_detail_wrap .comment_info .time_wrap {
+  color: #666;
+}
+.comment_detail_wrap .comment_info .content_wrap {
+  font-size: 32rpx;
+}
+.comment_detail_wrap .comment_info .reply_btn_wrap {
+  padding-left: 450rpx;
+}
+.comment_detail_wrap .comment_info .reply_btn_wrap .iconfont {
+  font-size: 30rpx;
+  color: #666;
+}
+.comment_detail_wrap .reply_bg {
+  border-radius: 10rpx;
+  background-color: #f3f3f3;
+  padding: 10rpx 20rpx;
+}
+.comment_detail_wrap .reply_bg .reply_wrap .reply_info {
+  margin-bottom: 20rpx;
+  display: flex;
+}
+.comment_detail_wrap .reply_bg .reply_wrap .reply_info .reply_text {
+  color: #378591;
+}
+.comment_detail_wrap .reply_bg .reply_wrap .reply_icon_wrap {
+  padding-left: 430rpx;
+}
+.comment_detail_wrap .reply_bg .reply_wrap .reply_icon_wrap .iconfont {
+  font-size: 27rpx;
+  color: #666;
+}

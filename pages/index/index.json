@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "SearchInput":"../../components/SearchInput/SearchInput",
+    "Tabs":"../../components/Tabs/Tabs",
+    "ListItem":"../../components/ListItem/ListItem"
+  },
+  "navigationBarTitleText": "首页",
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle":"dark"
+}

@@ -1,0 +1,10 @@
+/* pages/article_list/index.wxss */
+page {
+  background-color: #f8f8f8;
+}
+.no_data {
+  background-color: #fff;
+  font-size: 30rpx;
+  padding: 50rpx;
+  margin-top: 80rpx;
+}

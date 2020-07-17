@@ -1,0 +1,29 @@
+<view class="wrap_box">
+  <view class="title_wrap">
+    <view class="input_name">
+      博文标题
+    </view>
+    <input type="text" value="{{submitArticle.title}}" bindinput="handleInput" placeholder="长度为1-10个字符哦"></input>
+  </view>
+  <view class="type_wrap">
+    <view class="input_name">
+      博文类型
+    </view>
+    <picker mode="selector" range="{{typeList}}" value="{{submitArticle.type}}" bindchange="bindPickerChange">
+      <view class="picker">当前选择:{{typeList[submitArticle.type]}}</view>
+    </picker>
+  </view>
+  <view class="image_wrap">
+    <view class="input_name">
+      封面图片
+    </view>
+    <view class="image_content">
+      <image class="" src="{{submitArticle.imageSrc}}" mode="aspectFill"></image>
+    </view>
+  </view>
+  <view class="button_wrap">
+    <button type="primary" bindtap="uploadImage" class="upload_btn">添加图片</button>
+    <button type="default" class="submit_btn" bindtap="handleSubmit">编辑博文</button>
+    <button type="warn" class="delete_btn" bindtap="handleDelete">清空</button>
+  </view>
+</view>

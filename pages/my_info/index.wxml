@@ -1,0 +1,33 @@
+<form class="modify_wrap" bindsubmit="submit">
+  <view class="name_wrap">
+    <view class="text_wrap">昵称:</view>
+    <input type="text" name="nickName" value="{{userInfo.nickName}}"></input>
+  </view>
+  <view class="gender_wrap">
+    <view class="text_wrap">性别:</view>
+    <radio-group bindchange="changeGender" name="gender">
+      <label>
+        <radio class="" value="1" checked="{{userInfo.gender==1}}" color="#06c261">     
+        </radio>
+        <view class="text_wrap">男</view>
+      </label>
+      <label>
+        <radio class="" value="2" checked="{{userInfo.gender==2}}" color="#06c261">
+        </radio>
+        <view class="text_wrap">女</view>
+      </label>
+    </radio-group>
+  </view>
+  <view class="school_wrap">
+    <view class="text_wrap">学校:</view>
+    <input type="text" value="{{userInfo.school?userInfo.school:''}}" name="school"></input>
+  </view>
+  <view class="major_wrap">
+    <view class="text_wrap">专业:</view>
+    <input type="text" name="major" value="{{userInfo.major?userInfo.major:''}}"></input>
+  </view>
+  <view class="btn_wrap">
+    <button type="primary" form-type="submit">提交</button>
+    <button type="warn">取消</button>
+  </view>
+</form>

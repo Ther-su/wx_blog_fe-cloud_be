@@ -1,0 +1,27 @@
+<view class="main">
+  <view class="top">
+    <view class="head_image_wrap">
+      <image src="{{author.avatarUrl}}" mode="widthFix">
+      </image>
+    </view>
+    <view wx:if="{{hasLogin}}" class="{{author.isCare?'has_care':'care_btn'}}" bindtap="careAuthor">{{author.isCare?'取消关注':'+关注'}}</view>
+  </view>
+  <view class="detail_wrap">
+    <view class="name_wrap">
+      <view class="name">{{author.nickName}}</view>
+      <iconfont name="{{author.gender==1?'nan':'nv'}}" size="45"></iconfont>
+    </view>
+    <view class="info_wrap">
+      <view class="school_wrap" wx:if="{{author.school}}">{{author.school}}</view>
+      <view class="major_wrap" wx:if="{{author.major}}">{{author.major}}</view>
+    </view>
+  </view>
+</view>
+<Tabs tabs="{{tabs}}" num="{{num}}" activeFlag="{{activeFlag}}" bindtabsItemChange="handleTabsItemChange">
+  <block wx:if="{{activeFlag==0}}">
+    <ListItem articleList="{{writeArticleList}}"></ListItem>
+  </block>
+  <block wx:elif="{{activeFlag==1}}">
+    <ListItem articleList="{{collectArticleList}}"></ListItem>
+  </block>
+</Tabs>

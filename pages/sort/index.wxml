@@ -1,0 +1,8 @@
+<SearchInput></SearchInput>
+<view class="sort_wrap">
+  <navigator wx:for="{{sortList}}" wx:key="id" url="/pages/article_list/index?type={{item.id}}">
+    <view class="title_wrap">{{item.title}}</view>
+    <view class="description_wrap">{{item.description}}</view>
+    <view class="icon_wrap"><iconfont name="{{item.icon}}" size="45"></iconfont></view>
+  </navigator>
+</view>

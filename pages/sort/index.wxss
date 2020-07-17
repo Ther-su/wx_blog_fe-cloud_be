@@ -1,0 +1,26 @@
+page {
+  background-color: #f8f8f8;
+}
+.sort_wrap {
+  padding: 10rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.sort_wrap navigator {
+  width: 47%;
+  margin: 10rpx;
+  background-color: #fff;
+  padding: 20rpx;
+}
+.sort_wrap navigator .title_wrap {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.sort_wrap navigator .description_wrap {
+  color: #666;
+}
+.sort_wrap navigator .icon_wrap {
+  padding-left: 250rpx;
+}

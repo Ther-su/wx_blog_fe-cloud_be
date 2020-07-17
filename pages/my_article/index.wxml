@@ -1,0 +1,10 @@
+<block wx:if="{{myArticleList.length}}">
+  <ListItem articleList="{{myArticleList}}"></ListItem>
+</block>
+<block wx:else>
+  <view class="no_data">
+    <view class="tip_wrap">这里还空空如也呢...</view>
+    <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588698469690&di=55b6c1556fdf70eaadc3a947ffb7ca95&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn13%2F511%2Fw787h524%2F20180425%2Fda54-fzqvvsc1198653.jpg" mode="widthFix" lazy-load="true">
+    </image>
+  </view>
+</block>

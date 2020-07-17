@@ -1,0 +1,34 @@
+<SearchInput></SearchInput>
+<view class="index_swiper">
+    <swiper autoplay="{{true}}" indicator-dots="{{true}}" circular="{{true}}">
+      <swiper-item wx:for="{{swiperList}}" wx:key="id">
+          <image src="{{item.image}}" mode="widthFix">  
+          </image>
+      </swiper-item>
+    </swiper>
+  </view>
+<Tabs tabs="{{tabs}}" num="{{num}}" activeFlag="{{activeFlag}}" bindtabsItemChange="handleTabsItemChange">
+  <block wx:if="{{activeFlag==0}}">
+    <ListItem articleList="{{newestArticle}}"></ListItem>
+  </block>
+  <block wx:elif="{{activeFlag==1}}">
+    <view class="first_tab">
+      <navigator url="" wx:for="{{hottestArticle}}" wx:key="id" url="/pages/article_detail/index?id={{item.id}}">
+        <view class="order_wrap">{{index+1}}</view>
+        <view class="image_wrap">
+          <image mode="aspectFill" class="" src="{{item.image}}">
+          </image>
+        </view>
+        <view class="article_info_wrap">
+          <view class="title_wrap">{{item.title}}</view>
+          <view class="icon_wrap">
+            <i class="iconfont icon-zuozhe">{{item.author}}</i>
+            <i class="iconfont icon-pinglun">{{item.commentNum}}</i>
+            <i class="iconfont icon-dianzan_huaban">{{item.likeNum}}</i>
+            <i class="iconfont icon-shoucang">{{item.collectNum}}</i>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </block>
+</Tabs>

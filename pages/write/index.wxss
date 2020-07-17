@@ -1,0 +1,59 @@
+page {
+  background-color: #dedede;
+}
+.wrap_box {
+  font-size: 35rpx;
+  padding: 40rpx;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+}
+.wrap_box .title_wrap input {
+  width: 100%;
+  background-color: #fff;
+  height: 80rpx;
+  padding: 0 20rpx;
+  caret-color: #06c261;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.wrap_box .type_wrap {
+  margin-top: 5rpx;
+}
+.wrap_box .type_wrap picker .picker {
+  width: 100%;
+  background-color: #fff;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  border-radius: 4px;
+}
+.wrap_box .image_wrap {
+  margin-top: 5rpx;
+}
+.wrap_box .image_wrap .image_content {
+  width: 100%;
+  background-color: #ccc;
+}
+.wrap_box .button_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 360rpx;
+}
+.wrap_box .button_wrap .upload_btn {
+  width: 100%;
+}
+.wrap_box .button_wrap .submit_btn {
+  width: 100%;
+  display: flex;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  background-color: #317ef3;
+  border-radius: 4px;
+}
+.wrap_box .button_wrap .delete_btn {
+  width: 100%;
+}

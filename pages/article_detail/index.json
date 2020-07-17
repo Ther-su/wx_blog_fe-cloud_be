@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "CommentBox":"../../components/CommentBox/CommentBox"
+  },
+  "navigationBarTitleText": "博文详情"
+}

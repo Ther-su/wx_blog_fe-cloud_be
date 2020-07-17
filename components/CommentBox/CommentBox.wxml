@@ -1,0 +1,22 @@
+<view class="comment_detail_wrap" wx:for="{{comment}}" wx:key="id" wx:for-index="index">
+  <view class="comment_avatar">
+    <image src="{{item.avatarUrl}}" mode="widthFix"></image>
+  </view>
+  <view class="comment_info">
+    <view class="name_wrap">{{item.nickName}}</view>
+    <view class="time_wrap">{{item.time}}</view>
+    <view class="content_wrap">{{item.content}}</view>
+    <view class="reply_btn_wrap"><i class="iconfont icon-pinglun" data-index="{{index}}" data-commentId="{{item.id}}" data-name="{{item.nickName}}" data-commenterid="{{item.commenterId}}" bindtap="changeCommenter">回复</i></view>
+    <block wx:if="{{item.apply.length}}">
+      <view class="reply_bg">
+        <view class="reply_wrap" wx:for="{{item.apply}}" wx:key="id" wx:for-item="item1" wx:for-index="index1">
+          <view class="reply_info">
+            <view class="reply_text">{{item1.responder}}@{{item1.reviewer}}：</view>
+            <view class="reply_content">{{item1.content}}</view>
+          </view>
+          <view class="reply_icon_wrap"><i class="iconfont icon-pinglun" data-commentId="{{item.id}}" data-index="{{index}}" data-name="{{item1.responder}}" data-commenterid="{{item1.commenterId}}" bindtap="changeCommenter">回复</i></view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

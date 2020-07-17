@@ -1,0 +1,109 @@
+page {
+  background-color: #edece8;
+}
+.user_info_wrap {
+  height: 45vh;
+  overflow: hidden;
+  background-color: #06c261;
+  position: relative;
+}
+.user_info_wrap .user_img_wrap {
+  position: relative;
+}
+.user_info_wrap .user_img_wrap .user_bg {
+  height: 50vh;
+  filter: blur(15rpx);
+}
+.user_info_wrap .user_img_wrap .user_info {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20%;
+  text-align: center;
+}
+.user_info_wrap .user_img_wrap .user_icon {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+.user_info_wrap .user_img_wrap .user_name {
+  color: #fff;
+  margin-top: 40rpx;
+  font-size: 40rpx;
+}
+.user_info_wrap button {
+  width: 50%;
+  margin: 100rpx auto;
+}
+.user_content {
+  position: relative;
+}
+.user_content .user_main {
+  color: #666;
+  position: absolute;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -40rpx;
+}
+.user_content .user_main .history_wrap {
+  border-radius: 4px;
+  background-color: #fff;
+  display: flex;
+}
+.user_content .user_main .history_wrap navigator {
+  text-align: center;
+  flex: 1;
+  padding: 30rpx 0;
+}
+.user_content .user_main .history_wrap navigator .icon_text_wrap {
+  display: flex;
+  margin: 0 auto;
+  width: 30%;
+  align-items: center;
+}
+.user_content .user_main .history_wrap navigator .icon_text_wrap .history_num {
+  flex: 1;
+  font-size: 30rpx;
+}
+.user_content .user_main .history_wrap navigator .icon_text_wrap .iconfont {
+  flex: 1;
+  color: #06c261;
+}
+.user_content .user_main .history_wrap navigator .history_name {
+  font-size: 30rpx;
+}
+.user_content .user_main .my_info_wrap {
+  background-color: #fff;
+  margin-top: 30rpx;
+  padding: 30rpx;
+  font-size: 30rpx;
+  border-radius: 4px;
+}
+.user_content .user_main .app_info_wrap {
+  background-color: #fff;
+  margin-top: 30rpx;
+  border-radius: 4px;
+}
+.user_content .user_main .app_info_wrap .app_info_item {
+  padding: 30rpx!important;
+  border-bottom: 1rpx solid #ccc !important;
+  font-size: 30rpx;
+}
+.share_button_wrap button {
+  background-color: #fff;
+  font-size: 30rpx;
+  display: flex;
+  padding: 20rpx 30rpx;
+  color: #666;
+}
+.no_login_tip_wrap {
+  width: 100vw;
+  height: 500rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.no_login_tip {
+  font-size: 30rpx;
+}

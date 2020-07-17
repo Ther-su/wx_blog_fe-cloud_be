@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "SearchInput":"../../components/SearchInput/SearchInput",
+    "ListItem":"../../components/ListItem/ListItem"
+  },
+  "enablePullDownRefresh":true,
+  "navigationBarTitleText": "博文列表",
+  "backgroundTextStyle":"dark"
+}

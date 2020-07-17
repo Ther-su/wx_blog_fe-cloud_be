@@ -1,0 +1,33 @@
+ navigator{
+  height: 200rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx 10rpx;
+  margin-bottom: 20rpx;
+  border-bottom: 1rpx solid #e4e7ed;
+}
+ .image_wrap {
+  flex: 3;
+}
+ .image_wrap image {
+  width: 90%;
+  height: 100%;
+}
+ .article_info_wrap {
+  flex: 5;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+ .article_info_wrap .title_wrap {
+  font-size: 40rpx;
+}
+.article_info_wrap .icon_wrap {
+  display: flex;
+}
+.article_info_wrap .icon_wrap .iconfont {
+  flex: 1;
+  color: #666;
+  font-size: 32rpx;
+}

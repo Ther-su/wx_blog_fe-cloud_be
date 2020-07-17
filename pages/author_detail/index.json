@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "Tabs":"../../components/Tabs/Tabs",
+    "ListItem":"../../components/ListItem/ListItem"
+  },
+  "navigationBarTitleText": "博主信息"
+}

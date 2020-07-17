@@ -1,0 +1,15 @@
+<navigator wx:for="{{articleList}}" wx:key="id" url="/pages/article_detail/index?id={{item.id}}">     
+  <view class="image_wrap">
+    <image mode="aspectFill" class="" src="{{item.image}}">
+    </image>
+  </view>
+  <view class="article_info_wrap">
+    <view class="title_wrap">{{item.title}}</view>
+    <view class="icon_wrap">
+      <i class="iconfont icon-zuozhe">{{item.author}}</i>
+      <i class="iconfont icon-pinglun">{{item.commentNum}}</i>
+      <i class="iconfont icon-dianzan_huaban">{{item.likeNum}}</i>
+      <i class="iconfont icon-shoucang">{{item.collectNum}}</i>
+    </view>
+  </view>
+</navigator>

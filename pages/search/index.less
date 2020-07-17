@@ -1,0 +1,46 @@
+page{
+  background-color: #dedede;
+  padding: 20rpx;
+}
+.search_row{
+  height: 90rpx;
+  display: flex;
+  input{
+    background-color: #fff;
+    flex: 1;
+    height: 100%;
+    padding-left: 30rpx;
+  }
+  button:not([size='mini']){
+    width: 110rpx;
+    height: 100%;
+    font-size: 28rpx;
+    padding: 0;
+    margin: 0 10rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26rpx;
+  }
+}
+
+.search_content{
+  margin-top: 30rpx;
+  .search_item{
+    background-color: #fff;
+    font-size: 26rpx;
+    padding: 15rpx 10rpx;
+    border-bottom: 1px solid #ccc;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  navigator {
+    display: flex;
+    justify-content: space-around;
+    .title {
+      font-size: 40rpx;
+      font-weight: bold;
+    }
+  }
+}

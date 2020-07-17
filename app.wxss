@@ -1,0 +1,18 @@
+@import './styles/iconfont.wxss';
+page,view,swiper,text,swiper-item,image,navigator{
+  padding: 0;
+  margin:0;
+  box-sizing:border-box
+}
+page{
+  font-size: 28rpx;
+}
+image{
+  width: 100%;
+}
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  }
