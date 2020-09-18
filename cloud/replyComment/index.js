@@ -25,6 +25,35 @@ exports.main = async (event, context) => {
     }).where({
       openid:wxContext.OPENID
     }).get()
+    // const getArticleTime=(originVal)=>{
+    //   const dt = new Date(parseInt(originVal))
+    //   const y = dt.getFullYear()
+    //   const m = (dt.getMonth() + 1 + '').padStart(2, '0')
+    //   const d = (dt.getDate() + 1 + '').padStart(2, '0')
+    //   const hh = (dt.getHours() + '').padStart(2, '0')
+    //   const mm = (dt.getMinutes() + '').padStart(2, '0')
+    //   const ss = (dt.getSeconds() + '').padStart(2, '0')
+    //   return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
+    // }
+    // await cloud.openapi.subscribeMessage.send({
+    //   touser: event.commenterId,
+    //   page: 'index',
+    //   lang: 'zh_CN',
+    //   data: {
+    //     thing1: {
+    //       value:event.commenterId
+    //     },
+    //     thing2: {
+    //       value:event.content
+    //     },
+    //     time3: {
+    //       value: getArticleTime(event.time)
+    //     },
+    //   },
+    //   templateId: 'WMZMuwklfvhu2tD2X9pJ0dugBwzNCa-MqmWuqC3ObLY',
+    //   miniprogramState: 'trial'
+    // })
+
     await transaction.collection('article').where({
       _id:event.articleId
     }).update({

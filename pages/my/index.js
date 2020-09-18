@@ -65,6 +65,10 @@ Page({
       content: '本博客由Ther,一个普通的代码爱好者开发',
       
     })
+    // wx.requestSubscribeMessage({
+    //   tmplIds: ['WMZMuwklfvhu2tD2X9pJ0dugBwzNCa-MqmWuqC3ObLY'],
+    //   success (res) { console.log(res);}
+    // })
   },
   /**
    * 生命周期函数--监听页面隐藏

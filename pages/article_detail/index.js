@@ -228,8 +228,8 @@ Page({
         name:'replyComment'
       })
       let {comment} = this.data
-      info.responder = res.nickName
-      info.commenterId = res.commenterId
+      info.responder = res.list.nickName
+      info.commenterId = res.list.commenterId
       info.time=getArticleTime(info.time)
       comment[this.data.chosedIndex].apply.push(info)
       this.setData({

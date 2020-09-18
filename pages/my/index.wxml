@@ -1,3 +1,4 @@
+<!--我的页-->
 <view class="user_info_wrap">
   <view class="user_img_wrap" wx:if="{{hasLogin}}">
     <image class="user_bg" src="{{userInfo.avatarUrl}}"></image>

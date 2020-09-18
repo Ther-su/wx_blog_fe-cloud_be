@@ -11,8 +11,8 @@ exports.main = async (event, context) => {
     const {data}=await db.collection('user').where({
       openid:wxContext.OPENID
     }).get()
-    if(!data.length){
-      await db.collection('user').add({
+    if(!data.length){//判断是否登录过
+      await db.collection('user').add({//注册新用户
         data:{
           nickName:event.nickName,
           gender:event.gender,

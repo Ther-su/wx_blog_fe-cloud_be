@@ -9,8 +9,8 @@ exports.main = async (event, context) => {
   const db=cloud.database()
   const _=db.command
   try{
-    const transaction=await db.startTransaction()
-    await transaction.collection('comment').add({
+    const transaction=await db.startTransaction()//开启事务
+    await transaction.collection('comment').add({//添加评论
       data:{
         articleId:event.articleId,
         commenterId:wxContext.OPENID,
@@ -24,7 +24,7 @@ exports.main = async (event, context) => {
     }).where({
       openid:wxContext.OPENID
     }).get()
-    await transaction.collection('article').where({
+    await transaction.collection('article').where({//同步该文章的评论数
       _id:event.articleId
     }).update({
       data:{
