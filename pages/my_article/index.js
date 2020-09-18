@@ -46,19 +46,17 @@ Page({
   async getArticleList(type){
     if(type=='write'){
       const res=await request({
-        url:'/my/article/write',
-        method:'GET'
+        name:'getMyWriteArticle',
       })
       this.setData({
-        myArticleList: res
+        myArticleList: res.list
       })
     }else if(type=='collect'){
       const res=await request({
-        url:'/my/article/collect',
-        method:'GET'
+        name:'getMyCollectArticle',
       })
       this.setData({
-        myArticleList: res
+        myArticleList: res.list
       })
     }
   },

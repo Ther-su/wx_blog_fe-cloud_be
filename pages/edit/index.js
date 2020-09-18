@@ -1,5 +1,6 @@
 import {chooseImage,showToast} from "../../utils/asyncWx.js"
 import {request} from "../../request/index.js"
+let imgArr=[]
 Page({
   data: {
     formats: {},
@@ -98,30 +99,33 @@ Page({
       })
       return
     }
-    this.editorCtx.getContents({
-      success:async function(res){
-        submitArticle.imageSrc= wx.getFileSystemManager().readFileSync(submitArticle.imageSrc,'base64')
-        submitArticle.content = res.html
-        console.log(submitArticle);
-        await request({
-          url:'/my/article',
-          method:'POST',
-          header:{'content-type':'application/json'},
-          data:submitArticle
-        })
-        
-      }
-    })
-    let pages=getCurrentPages();
-    pages[0].handleDelete()
-    this.editorCtx.clear({
-    })
-    await showToast({
-      title:'上传博文成功'
-    })
-    wx.navigateBack({
-      delta: 1
-    });
+    try {
+      const res=await this.editorCtx.getContents()
+      submitArticle.imageSrc= wx.getFileSystemManager().readFileSync(submitArticle.imageSrc,'base64')
+      submitArticle.content = res.html
+      submitArticle.time=Date.now()
+      await request({
+        name:'uploadArticle',
+        data:submitArticle
+      })
+      let pages=getCurrentPages();
+      pages[0].handleDelete()
+      this.editorCtx.clear({
+      })
+      const userInfo=wx.getStorageSync('userInfo');
+      userInfo.writeArticle+=1;
+      wx.setStorageSync("userInfo", userInfo);
+      await showToast({
+        title:'上传博文成功'
+      })
+      wx.navigateBack({
+        delta: 1
+      });
+    }catch(e){
+      await showToast({
+        title:e
+      })
+    }
   },
   removeFormat() {
     this.editorCtx.removeFormat()
@@ -135,15 +139,15 @@ Page({
   },
   async insertImage() {
     const res=await chooseImage()
-    let base64= wx.getFileSystemManager().readFileSync(res.tempFilePaths[0],'base64')
-    const {imgUrl}=await request({
-      url:'/my/article/image',
-      method:'POST',
-      data:{image:base64},
-      header:{'content-type':'application/json'},
-    })
+    let base64= 'data:image/png;base64,'+wx.getFileSystemManager().readFileSync(res.tempFilePaths[0],'base64')
+    // const {imgUrl}=await request({
+    //   url:'/my/article/image',
+    //   method:'POST',
+    //   data:{image:base64},
+    //   header:{'content-type':'application/json'},
+    // })
     this.editorCtx.insertImage({
-      src:imgUrl,
+      src:base64,
       width:'80%',
     })
   }

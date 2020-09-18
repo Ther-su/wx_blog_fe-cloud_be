@@ -11,14 +11,16 @@ Page({
   },
   async submit (e){
     const {message}=await request({
-      url:'/user',
-      method: 'PUT',
-      header: {'content-type':'application/json'},
+      name:'modifyUserInfo',
       data:e.detail.value
     })
     if(message=='ok'){
       await showToast({
         title:'修改信息成功'
+      })
+    }else{
+      await showToast({
+        title:message
       })
     }
   },
@@ -38,8 +40,7 @@ Page({
    */
   async getUserInfo (){
     const res = await request({
-      url:'/user',
-      method:'get'
+      name:'login',
     })
     this.setData({
       userInfo:res

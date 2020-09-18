@@ -18,11 +18,10 @@ Page({
   },
   async getAuthorList(){
     const res=await request({
-      url:'/my/author/care',
-      method:'GET'
+      name:'getMyCareAuthor',
     })
     this.setData({
-      authorList: res
+      authorList: res.list
     })
   },
   /**

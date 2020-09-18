@@ -35,8 +35,10 @@ Page({
   },
   async getCollectArticle(id){
     const res=await request({
-      url:`/author/${id}/article/collect`,
-      method:'GET'
+      name:'getAuthorCollect',
+      data:{
+        authorId:id
+      }
     })
     this.setData({
       collectArticleList:res
@@ -44,8 +46,10 @@ Page({
   },
   async getWriteArticle(id){
     const res=await request({
-      url:`/author/${id}/article/write`,
-      method:'GET'
+      name:'getAuthorWrite',
+      data:{
+        authorId:id
+      }
     })
     this.setData({
       writeArticleList:res
@@ -55,8 +59,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const token = wx.getStorageSync('token');
-    if(token){
+    const userInfo = wx.getStorageSync('userInfo');
+    if(userInfo){
       this.setData({
         hasLogin:true
       })
@@ -84,8 +88,10 @@ Page({
   },
   async getAuthorDetail(id){
     const res=await request({
-      url:`/author/${id}/detail`,
-      method:'GET'
+      name:'getAuthorDetail',
+      data:{
+        authorId:id
+      }
     })
     this.setData({
       author:res
@@ -95,10 +101,10 @@ Page({
     let author = this.data.author
     author.isCare = !author.isCare
     const {message}=await request({
-      url:`/author/${this.data.author.id}/care`,
-      method:'put',
+      name:'careAuthor',
       data:{
-        isCare:author.isCare
+        isCare:author.isCare,
+        authorId:author.authorId
       }
     })
     if(message!="ok"){
@@ -106,6 +112,15 @@ Page({
         title:message
       })
     }else {
+      let turnNum=0;
+      if(article.isCare){
+        turnNum=1;
+      }else{
+        turnNum=-1;
+      }
+      const userInfo=wx.getStorageSync('userInfo');
+      userInfo.careAuthor+=turnNum
+      wx.setStorageSync('userInfo', userInfo);
       this.setData({
         author:author
       })

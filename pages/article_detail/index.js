@@ -1,11 +1,13 @@
 // pages/article_detail/index.js
 import {request} from "../../request/index.js"
 import {showToast,getArticleType,getArticleTime} from "../../utils/asyncWx.js"
+const WxParse=require('../../utils/wxParse/wxParse.js')
 Page({
 
   /**
    * 页面的初始数据
    */
+  timer:null,
   data: {
     article:{},
     comment:[],
@@ -22,8 +24,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const token = wx.getStorageSync('token');
-    if(token){
+    const userInfo = wx.getStorageSync('userInfo');
+    if(userInfo){
       this.setData({
         hasLogin:true
       })
@@ -61,10 +63,10 @@ Page({
     }
     try{
       const {message} = await request({
-        url:`/article/${this.data.article.id}/collect`,
-        method:'put',
+        name:'collectArticle',
         data:{
-          isCollect:article.isCollect
+          isCollect:article.isCollect,
+          id:article._id
         }
       })
       if(message!="ok"){
@@ -72,7 +74,9 @@ Page({
           title:message
         })
       }else {
-        console.log('走了else');
+        const userInfo=wx.getStorageSync('userInfo');
+        userInfo.collectArticle+=1
+        wx.setStorageSync('userInfo', userInfo);
         this.setData({
           article:article
         })
@@ -83,10 +87,12 @@ Page({
     }
   },
   async getComment(id){
-    let res = await request({
-      url:`/article/${id}/comment`,
-      method:'get'
-    })
+    let res = (await request({
+      name:'getComment',
+      data:{
+        articleId:id
+      }
+    })).list
     res = res.map((v)=>{
       v.time = getArticleTime(v.time)
       return v
@@ -104,10 +110,10 @@ Page({
       article.likeNum-=1;
     }
     const {message}=await request({
-      url:`/article/${this.data.article.id}/like`,
-      method:'put',
+      name:'likeArticle',
       data:{
-        isLike:article.isLike
+        isLike:article.isLike,
+        id:article._id
       }
     })
     if(message!="ok"){
@@ -124,10 +130,10 @@ Page({
     let article = this.data.article
     article.isCare = !article.isCare
     const {message}=await request({
-      url:`/author/${this.data.article.authorId}/care`,
-      method:'put',
+      name:'careAuthor',
       data:{
-        isCare:article.isCare
+        isCare:article.isCare,
+        authorId:article.authorId
       }
     })
     if(message!="ok"){
@@ -135,22 +141,19 @@ Page({
         title:message
       })
     }else {
+      let turnNum=0;
+      if(article.isCare){
+        turnNum=1;
+      }else{
+        turnNum=-1;
+      }
+      const userInfo=wx.getStorageSync('userInfo');
+      userInfo.careAuthor+=turnNum
+      wx.setStorageSync('userInfo', userInfo);
       this.setData({
         article:article
       })
     }
-  },
-  onEditorReady() {
-    let article = this.data.article
-    const that = this
-    wx.createSelectorQuery().select('#editor').context(function (res) {
-      console.log(res);
-      that.editorCtx = res.context
-      res.context.setContents({
-        html: article.content
-      })
-    }).exec()
-    
   },
   onShow: function () {
     // let pages=getCurrentPages()
@@ -158,17 +161,18 @@ Page({
     // let options=currentPage.options
   },
   async getArticleDetail(id){
-    const res=await request({
-      url:'/article/detail',
+    const {list}=await request({
+      name:'getArticleDetail',
       data:{
         id:id
       },
-      method:'GET'
     })
-    res.type=getArticleType(res.type)
-    res.time=getArticleTime(res.time)
+    list[0].type=getArticleType(list[0].type)
+    list[0].time=getArticleTime(list[0].time)
+    const that=this
+    WxParse.wxParse('blog','html',list[0].content,that,0)
     this.setData({
-      article:res
+      article:list[0]
     })
   },
   changeCommenter(e){
@@ -194,16 +198,14 @@ Page({
       const info = {
         time:Date.now(),
         content:this.data.commentContent,
-        articleId:this.data.article.id,
-        commenterId:this.data.commenterId
+        articleId:this.data.article._id,
       } 
       const res=await request({
-        url:'/comment/add',
-        header:{'content-type':'application/json'},
+        name:'addComment',
         data:info,
-        method:'POST'
       })
       let {comment} = this.data
+      info.time=getArticleTime(info.time)
       info.apply = []
       info.nickName = res.nickName
       info.avatarUrl = res.avatarUrl
@@ -219,16 +221,16 @@ Page({
         content:this.data.commentContent,
         commentId:this.data.commentId,
         commenterId:this.data.commenterId,
-        articleId:this.data.article.id
+        articleId:this.data.article._id
       }
       const res=await request({
-        url:'/comment/reply',
         data: info,
-        method:'POST'
+        name:'replyComment'
       })
       let {comment} = this.data
       info.responder = res.nickName
       info.commenterId = res.commenterId
+      info.time=getArticleTime(info.time)
       comment[this.data.chosedIndex].apply.push(info)
       this.setData({
         comment:comment,

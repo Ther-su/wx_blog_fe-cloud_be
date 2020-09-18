@@ -1,4 +1,4 @@
-<navigator wx:for="{{articleList}}" wx:key="id" url="/pages/article_detail/index?id={{item.id}}">     
+<navigator wx:for="{{articleList}}" wx:key="id" url="/pages/article_detail/index?id={{item._id}}">     
   <view class="image_wrap">
     <image mode="aspectFill" class="" src="{{item.image}}">
     </image>

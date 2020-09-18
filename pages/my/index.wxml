@@ -1,5 +1,5 @@
 <view class="user_info_wrap">
-  <view class="user_img_wrap" wx:if="{{userInfo.avatarUrl}}">
+  <view class="user_img_wrap" wx:if="{{hasLogin}}">
     <image class="user_bg" src="{{userInfo.avatarUrl}}"></image>
     <view class="user_info">
       <image class="user_icon" src="{{userInfo.avatarUrl}}"></image>

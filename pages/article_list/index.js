@@ -9,11 +9,15 @@ Page({
   data: {
     articleList:[]
   },
-  pageParam:-1,
+  total:0,
+  page:1,
+  pageSize:10,
+  flagTime:null,
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.flagTime=Date.now()
     this.getArticleList(options.type)
   },
 
@@ -35,17 +39,19 @@ Page({
     // this.getArticleList(type)
   },
   async getArticleList(type){
-    const {articleList,pageParam}=await request({
-      url:'/article/type',
+    const {list,total}=await request({
+      name:'getArticleByType',
       data:{
-        pageParam:this.pageParam,
-        type:type
+        page:this.page,
+        type:parseInt(type),
+        pageSize:this.pageSize,
+        flagTime:this.flagTime
       },
-      method:'GET'
     })
+    this.total=total
+    this.page++
     this.setData({
-      articleList:[...this.data.articleList,...articleList],
-      pageParam
+      articleList:[...this.data.articleList,...list],
     })
   },
   /**
@@ -69,11 +75,11 @@ Page({
     this.setData({
       articleList:[]
     })
+    this.flagTime=Date.now()
     let pages=getCurrentPages()
     let currentPage=pages[pages.length-1]
     let options=currentPage.options
     const {type}=options
-    this.pageParam=-1
     this.getArticleList(type)
     wx.stopPullDownRefresh()
   },
@@ -82,7 +88,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: async function () {
-    if(this.pageParam>1){
+    if(this.page*pageSize>total){
       this.getArticleList()
     }else{
       await showToast({

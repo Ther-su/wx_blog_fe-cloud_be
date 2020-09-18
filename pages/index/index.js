@@ -32,7 +32,10 @@ Page({
       }
     ]
   },
-  pageParam:-1,
+  flagTime:null,
+  page:1,
+  pageSize:6,
+  total:0,
   requestType:0,
   async handleTabsItemChange(e){
     const {index}=e.detail
@@ -44,40 +47,46 @@ Page({
     })
   },
   async upDateArticleRank(){
-    const articleList=await request({
-      url:'/article/rank',
-      method:'GET',
+    const {list}=await request({
+      name:'getHotArticle',
     })
     this.setData({
-      hottestArticle:articleList
+      hottestArticle:list
     })
   },
   //options(Object)
   async getNewestArticle(){
-    const {pageParam,articleList}=await request({
-      url:'/article/page',
-      method:'GET',
-      data:{pageParam:this.pageParam}
+    if(this.page*this.pageSize>=this.total){
+      await showToast({
+        title:'没有更多数据了'
+      })
+    }
+    const {total,list}=await request({
+      name:'getNewArticle',
+      data:{
+        page:this.page,
+        pageSize:this.pageSize,
+        flagTime:this.flagTime
+      }
     })
-    this.pageParam=pageParam
+    this.total=total
     this.setData({
-      newestArticle:[...this.data.newestArticle,...articleList]
+      newestArticle:[...this.data.newestArticle,...list]
     })
     
   },
   onLoad: function(options){
-    
+    this.flagTime=Date.now()
+    this.getNewestArticle()
+    this.upDateArticleRank()
   },
   onReady: function(){
     
   },
   onShow: function(){
-    this.pageParam = -1
-    this.setData({
-      newestArticle:[]
-    })
-    this.getNewestArticle()
-    this.upDateArticleRank()
+    // this.setData({
+    //   newestArticle:[]
+    // })
   },
   onHide: function(){
 
@@ -87,10 +96,11 @@ Page({
   },
   onPullDownRefresh: function(){
     if(this.requestType==0){
+      this.flagTime=Date.now()
       this.setData({
         newestArticle:[]
       })
-      this.pageParam=-1
+      this.page=1
       this.getNewestArticle()
       
     }
@@ -101,14 +111,13 @@ Page({
   },
   onReachBottom: async function(){
     if(this.requestType==0){
-      if(this.pageParam>1){
-        this.getNewestArticle()
-      }else{
+      if(this.total>=this.page*this.pageSize){
         await showToast({
           title:'没有更多数据了'
         })
         return
       }
+      this.getNewestArticle()
     }
   },
   onShareAppMessage: function(){

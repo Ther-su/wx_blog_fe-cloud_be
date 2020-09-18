@@ -16,35 +16,24 @@ Page({
    */
   async login(e){
     const {userInfo}=e.detail
-    // wx.setStorageSync("userInfo", userInfo);
-    const {code} = await login()
-    console.log(code);
-    const {token,writeArticle,collectArticle,careAuthor}=await request({
-      url: '/user',
-      data: {code:code,nickName:userInfo.nickName,gender:userInfo.gender,
-        avatarUrl:userInfo.avatarUrl},
-      header: {'content-type':'application/json'},
-      method: 'POST',
+    const {writeArticle,collectArticle,careAuthor}=await request({
+      name:'login',
+      data:{
+        nickName:userInfo.nickName,
+        gender:userInfo.gender,
+        avatarUrl:userInfo.avatarUrl
+      }
     })
     userInfo.writeArticle = writeArticle
     userInfo.collectArticle = collectArticle
     userInfo.careAuthor = careAuthor
-    wx.setStorageSync("token", token)
     this.setData({
       hasLogin:true,
       userInfo
     })
+    wx.setStorageSync("userInfo", userInfo);
     await showToast({
       title:'可以点击个人信息去玩善你的学校信息哦'
-    })
-  },
-  async getUserInfo (){
-    const res = await request({
-      url:'/user',
-      method:'get'
-    })
-    this.setData({
-      userInfo:res
     })
   },
   onLoad: function (options) {
@@ -62,11 +51,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const token = wx.getStorageSync("token");
-    if(token){
-      this.getUserInfo()
+    const userInfo = wx.getStorageSync("userInfo");
+    if(userInfo){
       this.setData({
-        hasLogin:true
+        hasLogin:true,
+        userInfo
       })
     }
   },

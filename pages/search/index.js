@@ -36,9 +36,9 @@ Page({
     })
   },
   async qsearch(query){
-    const res=await request({url:"/article/search",data:{query}})
+    const {list}=await request({name:"search",data:{query}})
     this.setData({
-      articles:res
+      articles:list
     })
   },
   /**

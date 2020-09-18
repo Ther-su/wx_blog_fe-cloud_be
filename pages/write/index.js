@@ -62,7 +62,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    const userInfo = wx.getStorageSync('userInfo');
+    if(userInfo){
+      this.setData({
+        hasLogin:true
+      })
+    }
   },
 
   /**
@@ -76,12 +81,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const token = wx.getStorageSync('token');
-    if(token){
-      this.setData({
-        hasLogin:true
-      })
-    }
+    
   },
 
   /**

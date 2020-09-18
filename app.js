@@ -2,6 +2,14 @@
 
 App({
   onLaunch: function () {
+    wx.cloud.init({
+      env:"ther-su-gomzo"
+    })
+    const verson=wx.getStorageSync('v3');
+    if(!verson){
+      wx.clearStorageSync();
+    }
+    wx.setStorageSync('v3', true);
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

@@ -1,4 +1,4 @@
-<navigator wx:for="{{authorList}}" url="/pages/author_detail/index?id={{item.id}}">
+<navigator wx:for="{{authorList}}" url="/pages/author_detail/index?id={{item.authorId}}">
   <view class="image_wrap">
     <image src="{{item.avatarUrl}}"  mode="widthFix">
     </image>
