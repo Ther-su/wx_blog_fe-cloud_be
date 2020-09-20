@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "skeleton": "../miniprogram_npm/miniprogram-skeleton"
+  },
   "navigationBarTitleText": "我关注的博主"
 }

@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    articleList:[]
+    articleList:[],
+    showSkeleton: true
   },
   total:0,
   page:1,
@@ -19,6 +20,12 @@ Page({
   onLoad: function (options) {
     this.flagTime=Date.now()
     this.getArticleList(options.type)
+    const that = this;
+		setTimeout(() => {     //3S后隐藏骨架屏
+			that.setData({
+				showSkeleton: false
+			})
+		}, 1000)
   },
 
   /**
@@ -88,7 +95,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: async function () {
-    if(this.page*pageSize>total){
+    if(this.page*pageSize<total){
       this.getArticleList()
     }else{
       await showToast({

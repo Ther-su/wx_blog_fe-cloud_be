@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "CommentBox":"../../components/CommentBox/CommentBox"
+    "CommentBox":"../../components/CommentBox/CommentBox",
+    "skeleton": "../miniprogram_npm/miniprogram-skeleton"
   },
   "navigationBarTitleText": "博文详情"
 }

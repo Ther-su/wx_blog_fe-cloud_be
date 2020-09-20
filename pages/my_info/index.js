@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfo: {},
+    showSkeleton: true
   },
   async submit (e){
     const {message}=await request({
@@ -32,7 +33,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const that = this;
+		setTimeout(() => {     //3S后隐藏骨架屏
+			that.setData({
+				showSkeleton: false
+			})
+		}, 1500)
   },
 
   /**

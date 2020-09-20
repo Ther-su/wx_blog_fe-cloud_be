@@ -1,7 +1,9 @@
 <SearchInput></SearchInput>
-<block wx:if="{{articleList.length}}">
-  <ListItem articleList="{{articleList}}"></ListItem>
-</block>
+<skeleton wx:if="{{showSkeleton}}" loading="chiaroscuro"></skeleton>
+<view class="skeleton" >
+  <block wx:if="{{articleList.length}}">
+    <ListItem articleList="{{articleList}}" isShow="{{true}}"></ListItem>
+  </block>
 <block wx:else>
   <view class="no_data">
     <view class="tip_wrap">这里还空空如也呢...</view>
@@ -9,3 +11,4 @@
     </image>
   </view>
 </block>
+</view>

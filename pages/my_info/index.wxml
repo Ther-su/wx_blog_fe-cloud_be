@@ -1,11 +1,12 @@
-<form class="modify_wrap" bindsubmit="submit">
+<skeleton wx:if="{{showSkeleton}}" loading="chiaroscuro"></skeleton>
+<form class="modify_wrap skeleton" bindsubmit="submit">
   <view class="name_wrap">
-    <view class="text_wrap">昵称:</view>
-    <input type="text" name="nickName" value="{{userInfo.nickName}}"></input>
+    <view class="text_wrap skeleton-rect">昵称:</view>
+    <input type="text" name="nickName" value="{{userInfo.nickName}}" class="skeleton-rect"></input>
   </view>
   <view class="gender_wrap">
-    <view class="text_wrap">性别:</view>
-    <radio-group bindchange="changeGender" name="gender">
+    <view class="text_wrap skeleton-rect">性别:</view>
+    <radio-group bindchange="changeGender" name="gender" class="skeleton-rect">
       <label>
         <radio class="" value="1" checked="{{userInfo.gender==1}}" color="#06c261">     
         </radio>
@@ -19,15 +20,15 @@
     </radio-group>
   </view>
   <view class="school_wrap">
-    <view class="text_wrap">学校:</view>
-    <input type="text" value="{{userInfo.school?userInfo.school:''}}" name="school"></input>
+    <view class="text_wrap skeleton-rect">学校:</view>
+    <input type="text" value="{{userInfo.school?userInfo.school:''}}" name="school" class="skeleton-rect"></input>
   </view>
   <view class="major_wrap">
-    <view class="text_wrap">专业:</view>
-    <input type="text" name="major" value="{{userInfo.major?userInfo.major:''}}"></input>
+    <view class="text_wrap skeleton-rect">专业:</view>
+    <input type="text" name="major" value="{{userInfo.major?userInfo.major:''}}" class="skeleton-rect"></input>
   </view>
   <view class="btn_wrap">
-    <button type="primary" form-type="submit">提交</button>
+    <button type="primary" form-type="submit" >提交</button>
     <button type="warn">取消</button>
   </view>
 </form>

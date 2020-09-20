@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "Tabs":"../../components/Tabs/Tabs",
-    "ListItem":"../../components/ListItem/ListItem"
+    "ListItem":"../../components/ListItem/ListItem",
+    "skeleton": "../miniprogram_npm/miniprogram-skeleton"
   },
   "navigationBarTitleText": "博主信息"
 }

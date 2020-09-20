@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "ListItem":"../../components/ListItem/ListItem"
+    "ListItem":"../../components/ListItem/ListItem",
+    "skeleton": "../miniprogram_npm/miniprogram-skeleton"
   },
   "backgroundTextStyle":"dark"
 }

@@ -7,7 +7,7 @@ Page({
   /**
    * 页面的初始数据
    */
-  timer:null,
+  
   data: {
     article:{},
     comment:[],
@@ -18,7 +18,8 @@ Page({
     commentId:0,
     isShowMask: false,
     hasLogin:false,
-    commenterId: 0
+    commenterId: 0,
+    showSkeleton: true
   },
   /**
    * 生命周期函数--监听页面加载
@@ -33,6 +34,12 @@ Page({
     const {id}=options
     this.getArticleDetail(id)
     this.getComment(id)
+    const that = this;
+		setTimeout(() => {     //3S后隐藏骨架屏
+			that.setData({
+				showSkeleton: false
+			})
+		}, 2000)
   },
 
   /**

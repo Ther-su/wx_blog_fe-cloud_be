@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    myArticleList: []
+    myArticleList: [],
+    showSkeleton: true
   },
 
   /**
@@ -25,6 +26,12 @@ Page({
       });
     }
     this.getArticleList(type)
+    const that = this;
+		setTimeout(() => {     //3S后隐藏骨架屏
+			that.setData({
+				showSkeleton: false
+			})
+		}, 1200)
   },
 
   /**

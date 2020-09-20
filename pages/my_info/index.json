@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "skeleton": "../miniprogram_npm/miniprogram-skeleton"
+  },
   "navigationBarTitleText": "修改个人信息"
 }

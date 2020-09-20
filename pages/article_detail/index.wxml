@@ -1,18 +1,19 @@
-
-<view class="article_wrap">
-  <view class="title_wrap">{{article.title}}</view>
+<skeleton wx:if="{{showSkeleton}}" loading="chiaroscuro"></skeleton>
+<view class="mainPage skeleton">
+  <view class="article_wrap">
+  <view class="title_wrap skeleton-rect">{{article.title}}</view>
   <view class="info_wrap">
     <navigator url="/pages/author_detail/index?id={{article.authorId}}">
-      <view class="avatar_wrap">
+      <view class="avatar_wrap skeleton-radius">
         <image src="{{article.avatarUrl}}" mode="widthFix" >
         </image>
       </view>
     </navigator>
     <view class="author_wrap">
-      <view class="name_wrap">{{article.author}}</view>
-      <view class="time_wrap">{{article.time}}</view>
+      <view class="name_wrap skeleton-rect">{{article.author}}</view>
+      <view class="time_wrap skeleton-rect">{{article.time}}</view>
     </view>
-    <view class="type_wrap">
+    <view class="type_wrap skeleton-rect">
       
         {{article.type}}
       
@@ -21,34 +22,36 @@
   <!-- <editor id="editor" class="ql-container" read-only="{{true}}" bindready="onEditorReady">
   </editor> -->
   <import src="../../utils/wxParse/wxParse.wxml"/>
-  <template is="wxParse" data="{{wxParseData:blog.nodes}}"/>
-  <view class="data_wrap">
-    <view class="like_num_wrap">
+  
+  <template class="skeleton-rect" is="wxParse" data="{{wxParseData:blog.nodes}}"/>
+ 
+  <view class="data_wrap ">
+    <view class="like_num_wrap skeleton-rect">
       <view class="num_wrap">{{article.likeNum}}</view>
       <view class="text_wrap">点赞数</view>
     </view>
-    <view class="collect_num_wrap">
+    <view class="collect_num_wrap skeleton-rect">
       <view class="num_wrap">{{article.collectNum}}</view>
       <view class="text_wrap">收藏数</view>
     </view>
-    <view class="collect_wrap" bindtap="collectArticle" wx:if="{{hasLogin}}">
+    <view class="collect_wrap skeleton-rect" bindtap="collectArticle" wx:if="{{hasLogin}}">
       <view class="iconfont {{article.isCollect?'icon-shoucang1':'icon-shoucang'}}"></view>
       <view class="text_wrap">{{article.isCollect?'取消收藏':'收藏'}}</view>
     </view>
   </view>
   <view class="btn_wrap" wx:if="{{hasLogin}}">
-    <button class="{{article.isLike?'like_click':'like_btn'}}" bindtap="likeArticle">{{!article.isLike?'点赞博文':'取消点赞'}}</button>
-    <button class="{{article.isCare?'care_click':'care_btn'}}" bindtap="careAuthor">{{article.isCare?'取消关注':'关注博主'}}</button>
+    <button class="{{article.isLike?'like_click':'like_btn'}} skeleton-rect" bindtap="likeArticle">{{!article.isLike?'点赞博文':'取消点赞'}}</button>
+    <button class="{{article.isCare?'care_click':'care_btn'}} skeleton-rect" bindtap="careAuthor">{{article.isCare?'取消关注':'关注博主'}}</button>
   </view>
 </view>
 
 <view class="comment_wrap">
-  <view class="comment_title_wrap">
+  <view class="comment_title_wrap skeleton-rect">
     <view class="comment_title">评论</view>
     <view class="comment_num">{{article.commentNum}}</view>
   </view>
   <block wx:if="{{comment.length==0}}">
-    <view class="no_comment_wrap">
+    <view class="no_comment_wrap ">
      <view class="no_comment_text_wrap">我来发表第一条评论吧~</view>
       <view class="image_wrap">
         <image src="https://storagecdn.xuetangx.com/public_assets/xuetangx/newplat/appcourseware/message.png" mode="widthFix" lazy-load="false" >
@@ -56,20 +59,20 @@
       </view>
     </view>
   </block>
-  <CommentBox comment="{{comment}}" bindchangeCommenter="changeCommenter"></CommentBox>
-  <view class="no_tip" wx:if="{{comment.length!=0}}">再怎么找也没有了~</view>
+  <CommentBox comment="{{comment}}" bindchangeCommenter="changeCommenter" ></CommentBox>
+  <view class="no_tip " wx:if="{{comment.length!=0}}">再怎么找也没有了~</view>
 </view>
 
 <view class="comment_input_wrap">
   <block wx:if="{{hasLogin}}">
-    <input type="text" bindfocus="handleFocus" value="{{commentContent}}" bindinput="handleInput" placeholder="{{type==1?'@'+oldComment:'说点什么吧'}}"></input>
-    <button class="send_btn" bindtap="sumbit">发送</button>
+    <input type="text" bindfocus="handleFocus" class="skeleton-rect" value="{{commentContent}}" bindinput="handleInput" placeholder="{{type==1?'@'+oldComment:'说点什么吧'}}"></input>
+    <button class="send_btn skeleton-rect" bindtap="sumbit">发送</button>
   </block>
   <block wx:else>
-    <view class="no_login_comment_tip">
+    <view class="no_login_comment_tip skeleton-rect">
       登录后才能发表评论哦
     </view>
   </block>
 </view>
+</view>
 
-<!--<view class="mask" wx:if="{{isShowMask}}" style="height:{{pageHeight}}"></view>-->

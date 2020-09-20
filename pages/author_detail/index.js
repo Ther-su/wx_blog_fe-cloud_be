@@ -22,7 +22,8 @@ Page({
     ],
     num:2,
     activeFlag:0,
-    hasLogin:false
+    hasLogin:false,
+    showSkeleton: true
   },
   async handleTabsItemChange(e){
     const {index}=e.detail
@@ -65,6 +66,12 @@ Page({
         hasLogin:true
       })
     }
+    const that = this;
+		setTimeout(() => {     //3S后隐藏骨架屏
+			that.setData({
+				showSkeleton: false
+			})
+		}, 2000)
   },
 
   /**

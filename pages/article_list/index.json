@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "SearchInput":"../../components/SearchInput/SearchInput",
-    "ListItem":"../../components/ListItem/ListItem"
+    "ListItem":"../../components/ListItem/ListItem",
+    "skeleton": "../miniprogram_npm/miniprogram-skeleton"
   },
   "enablePullDownRefresh":true,
   "navigationBarTitleText": "博文列表",

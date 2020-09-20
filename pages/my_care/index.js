@@ -8,13 +8,20 @@ Page({
    */
   data: {
     authorList: [],
+    showSkeleton: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getAuthorList()
+    const that = this;
+		setTimeout(() => {     //3S后隐藏骨架屏
+			that.setData({
+				showSkeleton: false
+			})
+		}, 1200)
   },
   async getAuthorList(){
     const res=await request({
@@ -35,7 +42,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getAuthorList()
+    
   },
 
   /**

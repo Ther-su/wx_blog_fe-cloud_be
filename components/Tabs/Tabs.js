@@ -17,12 +17,21 @@ Component({
       value:0
     }
   },
-
+  lifetimes:{
+    attached(){
+      const that = this;
+      setTimeout(() => {     
+        that.setData({
+          isShow: false
+        })
+      }, 1000)
+    }
+  },
   /**
    * 组件的初始数据
    */
   data: {
-
+    isShow:true
   },
 
   /**

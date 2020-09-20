@@ -1,5 +1,8 @@
+
 <SearchInput></SearchInput>
-<view class="index_swiper">
+<!-- <skeleton wx:if="{{showSkeleton}}" ></skeleton> -->
+
+  <view class="index_swiper">
     <swiper autoplay="{{true}}" indicator-dots="{{true}}" circular="{{true}}">
       <swiper-item wx:for="{{swiperList}}" wx:key="id">
           <image src="{{item.image}}" mode="widthFix">  
@@ -8,7 +11,9 @@
     </swiper>
   </view>
 <Tabs tabs="{{tabs}}" num="{{num}}" activeFlag="{{activeFlag}}" bindtabsItemChange="handleTabsItemChange">
-  <block wx:if="{{activeFlag==0}}">
+  
+  
+    <block wx:if="{{activeFlag==0}}" >
     <ListItem articleList="{{newestArticle}}"></ListItem>
   </block>
   <block wx:elif="{{activeFlag==1}}">
@@ -31,4 +36,6 @@
       </navigator>
     </view>
   </block>
+
+  
 </Tabs>

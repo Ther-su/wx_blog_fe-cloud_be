@@ -1,16 +1,19 @@
-<navigator wx:for="{{authorList}}" url="/pages/author_detail/index?id={{item.authorId}}">
-  <view class="image_wrap">
-    <image src="{{item.avatarUrl}}"  mode="widthFix">
-    </image>
-  </view>
-  <view class="info_wrap">
-    <view class="first_row">
-      <view class="name_wrap">{{item.nickName}}</view>
-      <iconfont name="{{item.gender==1?'nan':'nv'}}" size="45"></iconfont>
+<skeleton wx:if="{{showSkeleton}}" loading="chiaroscuro"></skeleton>
+<view class="skeleton" >
+  <navigator wx:for="{{authorList}}" url="/pages/author_detail/index?id={{item.authorId}}" >
+    <view class="image_wrap skeleton-radius">
+      <image src="{{item.avatarUrl}}"  mode="widthFix">
+      </image>
     </view>
-    <view class="second_row">
-      <view class="school_wrap" wx:if="{{item.school}}">{{item.school}}</view>
-      <view class="major_wrap" wx:if="{{item.major}}">{{item.major}}</view>
+    <view class="info_wrap">
+      <view class="first_row ">
+        <view class="name_wrap skeleton-rect">{{item.nickName}}</view>
+        <iconfont name="{{item.gender==1?'nan':'nv'}}" size="45"></iconfont>
+      </view>
+      <view class="second_row">
+        <view class="school_wrap skeleton-rect" wx:if="{{item.school}}">{{item.school}}</view>
+        <view class="major_wrap skeleton-rect" wx:if="{{item.major}}">{{item.major}}</view>
+      </view>
     </view>
-  </view>
-</navigator>
+  </navigator>
+</view>

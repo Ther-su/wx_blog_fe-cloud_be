@@ -5,6 +5,7 @@ Page({
   data: {
     newestArticle:[],
     hottestArticle:[],
+    //showSkeleton: true,
     tabs:[
       {
         id:0,
@@ -56,11 +57,11 @@ Page({
   },
   //options(Object)
   async getNewestArticle(){
-    if(this.page*this.pageSize>=this.total){
-      await showToast({
-        title:'没有更多数据了'
-      })
-    }
+    // if(this.page*this.pageSize>=this.total){
+    //   await showToast({
+    //     title:'没有更多数据了'
+    //   })
+    // }
     const {total,list}=await request({
       name:'getNewArticle',
       data:{
@@ -69,6 +70,7 @@ Page({
         flagTime:this.flagTime
       }
     })
+    this.page++;
     this.total=total
     this.setData({
       newestArticle:[...this.data.newestArticle,...list]
@@ -79,14 +81,19 @@ Page({
     this.flagTime=Date.now()
     this.getNewestArticle()
     this.upDateArticleRank()
+    // const that = this;
+		// setTimeout(() => {     //3S后隐藏骨架屏
+		// 	that.setData({
+		// 		showSkeleton: false
+		// 	})
+		// }, 1500)
   },
   onReady: function(){
     
   },
   onShow: function(){
-    // this.setData({
-    //   newestArticle:[]
-    // })
+    
+    
   },
   onHide: function(){
 
@@ -111,7 +118,7 @@ Page({
   },
   onReachBottom: async function(){
     if(this.requestType==0){
-      if(this.total>=this.page*this.pageSize){
+      if(this.total<=this.page*this.pageSize){
         await showToast({
           title:'没有更多数据了'
         })
